@@ -1,0 +1,30 @@
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "col2row";
+
+        col-gpios
+            = <&gpio 9 GPIO_ACTIVE_HIGH>
+            , <&gpio 10 GPIO_ACTIVE_HIGH>
+            , <&gpio 11 GPIO_ACTIVE_HIGH>
+            , <&gpio 12 GPIO_ACTIVE_HIGH>
+            , <&gpio 14 GPIO_ACTIVE_HIGH>
+            , <&gpio 24 GPIO_ACTIVE_HIGH>
+            , <&gpio 25 GPIO_ACTIVE_HIGH>
+            , <&gpio 26 GPIO_ACTIVE_HIGH>
+            , <&gpio 27 GPIO_ACTIVE_HIGH>
+            , <&gpio 28 GPIO_ACTIVE_HIGH>
+            ;
+
+        row-gpios
+            = <&gpio 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+};
