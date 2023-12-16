@@ -2,9 +2,9 @@
 #include <dt-bindings/zmk/keys.h>
 
 #define BASE 0
-#define LOWER   1
-#define RAISE   2
-#define MEDIA   3
+#define NAVI   1
+#define NUM   2
+#define ADJ   3
 
 / {
         // Todo: New Behaviors
@@ -29,61 +29,6 @@
                         mods = <(MOD_LSFT|MOD_RSFT)>;
                         keep-mods = <(MOD_RSFT)>;
                 };
-
-                space_backspace_with_lt: space_backspace_with_lt {
-                        compatible = "zmk,behavior-mod-morph";
-                        label = "SPACE_BACKSPACE";
-                        #binding-cells = <0>;
-                        bindings = <&lt LOWER SPACE>, <&lt LOWER BACKSPACE>;
-                        mods = <(MOD_LSFT|MOD_RSFT)>;
-                        keep-mods = <(MOD_RSFT)>;
-                };
-        };
-
-        combos {
-                compatible = "zmk,combos";
-
-                combo_esc {
-                        timeout-ms = <50>;
-                        key-positions = <11 12>;
-                        bindings = <&kp ESC>;
-                        layers = <BASE LOWER >;
-                };
-
-                combo_tab {
-                        timeout-ms = <50>;
-                        key-positions = <12 13>;
-                        bindings = <&kp TAB>;
-                        layers = <BASE LOWER >;
-                };
-
-                combo_backspace {
-                        timeout-ms = <50>;
-                        key-positions = <16 17>;
-                        bindings = <&bspc_del>;
-                        layers = <BASE LOWER >;
-                };
-
-                combo_enter {
-                        timeout-ms = <50>;
-                        key-positions = <17 18>;
-                        bindings = <&kp ENTER>;
-                        layers = <BASE LOWER >;
-                };
-
-                combo_capsword {
-                        timeout-ms = <50>;
-                        key-positions = <18 19>;
-                        bindings = <&caps_word>;
-                        layers = <BASE LOWER >;
-                };
-
-                combo_capslock {
-                        timeout-ms = <50>;
-                        key-positions = <28 29>;
-                        bindings = <&kp CAPSLOCK>;
-                        layers = <BASE LOWER >;
-                };
         };
 
         
@@ -94,12 +39,12 @@
                        bindings = <
                                 &kp Q &kp W       &kp E      &kp R      &kp T   &kp Y &kp U       &kp I      &kp O       &kp P
                                 &kp A &hm LCTRL S &hm LALT D &hm LGUI F &kp G   &kp H &hm RGUI J  &hm RALT K &hm RCTRL L &kp SEMI
-                                &kp Z &kp X       &kp C      &kp V      &kp B   &kp N &lt MEDIA M &kp COMMA  &kp DOT     &kp FSLH
-                                                        &none &none &kp LSHFT   &lt LOWER SPACE &none &kp GRAVE
+                                &kp Z &kp X       &kp C      &kp V      &kp B   &kp N &lt ADJ M &kp COMMA  &kp DOT     &kp FSLH
+                                                        &none &none &kp LSHFT   &lt NAVI SPACE &none &kp GRAVE
                         >;
                 };
 
-                lower_layer {
+                navigation_layer {
                         bindings = <
                                 &kp N1    &kp N2    &kp N3   &kp N4   &kp N5     &kp N6   &kp N7        &kp N8      &kp N9    &kp N0
                                 &kp MINUS &kp LCTRL &kp LALT &kp LGUI &kp PLUS   &kp LEFT &kp DOWN      &kp UP      &kp RIGHT &kp SQT
@@ -109,7 +54,7 @@
                 };
 
                 // TODO: Update this with macros and common shortucts
-                raise_layer {
+                number_layer {
                         bindings = <
                                 &none &none &none &none &none   &none &none &none &none &none
                                 &none &none &none &none &none   &none &none &none &none &none
@@ -118,7 +63,17 @@
                         >;
                 };
 
-                media_layer {
+                // TODO: Update this with macros and common shortucts
+                function_layer {
+                        bindings = <
+                                &none &none &none &none &none   &none &none &none &none &none
+                                &none &none &none &none &none   &none &none &none &none &none
+                                &none &none &none &none &none   &none &none &none &none &none
+                                         &trans &trans &trans   &trans &trans &trans
+                        >;
+                };
+
+                adjust_layer {
                         bindings = <
                                 &kp C_BKLT_TOG   &kp C_BRI_DN &kp C_BRI_UP &none &none   &none &none &none &none &none
                                 &kp C_MUTE       &kp C_VOL_DN &kp C_VOL_UP &none &none   &none &none &none &none &none
